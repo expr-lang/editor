@@ -1,0 +1,49 @@
+{
+  "name": "@expr-lang/editor",
+  "description": "A expr editor",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/editor.js",
+  "types": "./dist/editor.d.ts",
+  "exports": {
+    ".": "./dist/editor.js",
+    "./cursor": "./dist/cursor.js"
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/editor.d.ts"
+      ],
+      "cursor": [
+        "./dist/cursor.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsc -w",
+    "build": "tsc",
+    "size": "minify ./dist/editor.js --sourceType module | gzip-size",
+    "release": "release-it"
+  },
+  "devDependencies": {
+    "babel-minify": "^0.5.2",
+    "gzip-size-cli": "^5.1.0",
+    "release-it": "^16.1.3",
+    "typescript": "^5.1.6"
+  },
+  "release-it": {
+    "github": {
+      "release": true
+    },
+    "hooks": {
+      "after:bump": "npm run build"
+    }
+  },
+  "license": "MIT",
+  "repository": "expr-lang/editor",
+  "author": "Anton Medvedev <anton@medv.io>",
+  "homepage": "https://expr-lang.org/editor"
+}
